@@ -13,10 +13,11 @@
             <a class="btn btn-primary" asp-action="Create">Create New <i class="fas fa-plus"></i></a>
         </div>
     </div>
-</div>
+
 
 @if (Model.Count() == 0)
 {
+    <hr/>
 <div class="d-flex justify-content-center">
     <h3>No Categories Exist...</h3>
 </div>
@@ -24,6 +25,7 @@
 }
 else
 {
+    <hr/>
 <table class="table table-striped">
     <thead class="thead-dark">
         <tr>
@@ -51,3 +53,4 @@ else
     </tbody>
 </table>
 }
+</div>

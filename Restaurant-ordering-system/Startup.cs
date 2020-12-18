@@ -37,6 +37,7 @@ namespace Restaurant_ordering_system
             services.AddDatabaseDeveloperPageExceptionFilter();
 
             services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<IMenuItemRepository, MenuItemRepository>();
 
             services.AddAutoMapper(typeof(Maps));
 

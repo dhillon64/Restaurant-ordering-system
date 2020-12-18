@@ -14,6 +14,10 @@ namespace Restaurant_ordering_system.Mappings
         public Maps()
         {
             CreateMap<Category, CategoryVM>().ReverseMap();
+            CreateMap<MenuItem, MenuItemVM>().ReverseMap();
+            CreateMap<MenuItem, AdminViewVM>().ReverseMap();
+            CreateMap<MenuItem, EditMenuItemVM>().ReverseMap();
+
         }
     }
 }

@@ -16,6 +16,7 @@ namespace Restaurant_ordering_system.Data
 
         public DbSet<Category> Categories { get; set; }
 
-        public DbSet<Restaurant_ordering_system.Models.CategoryVM> CategoryVM { get; set; }
+        public DbSet<MenuItem> MenuItems { get; set; }
+
     }
 }
