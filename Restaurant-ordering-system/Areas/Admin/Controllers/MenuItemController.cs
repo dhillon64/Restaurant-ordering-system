@@ -41,9 +41,19 @@ namespace Restaurant_ordering_system.Areas.Admin.Controllers
         }
 
         // GET: MenuItemController/Details/5
-        public ActionResult Details(int id)
+        public async Task<IActionResult> Details(int id)
         {
-            return View();
+            var exists =await _repo.Exists(id);
+            if (!exists)
+            {
+                return NotFound();
+            }
+
+            var obj =await _repo.FindById(id);
+            
+            var objVm =_mapper.Map<MenuItemVM>(obj);
+
+            return View(objVm);
         }
 
         // GET: MenuItemController/Create
@@ -239,9 +249,35 @@ namespace Restaurant_ordering_system.Areas.Admin.Controllers
         }
 
         // GET: MenuItemController/Delete/5
-        public ActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id, MenuItemVM model)
         {
-            return View();
+                var obj = await _repo.FindById(id);
+                if (obj == null)
+                {
+                    return NotFound();
+                }
+
+            if (obj.Image != null)
+            {
+                string uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "images");
+
+                var imagePath = Path.Combine(uploadsFolder, obj.Image);
+                if (System.IO.File.Exists(imagePath))
+                {
+                    System.IO.File.Delete(imagePath);
+                }
+            }
+                
+                var success = await _repo.Delete(obj);
+                if (!success)
+                {
+                    return BadRequest();
+                }
+                
+
+                return RedirectToAction(nameof(Index));
+
+            
         }
 
         // POST: MenuItemController/Delete/5

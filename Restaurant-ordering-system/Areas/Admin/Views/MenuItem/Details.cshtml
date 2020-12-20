@@ -1,0 +1,87 @@
+﻿@model Restaurant_ordering_system.Models.MenuItemVM
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div class="row border backgroundWhite mx-auto">
+    <div class="col-6">
+        <form>
+
+
+            <div class="form-group">
+                <label asp-for="Id" class="control-label"></label>
+                <input asp-for="Id" class="form-control" readonly />
+
+            </div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" readonly />
+
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <textarea asp-for="Description" readonly class="form-control"></textarea>
+
+            </div>
+            <div class="form-group">
+                <label asp-for="Spicyness" class="control-label"></label>
+                <select disabled asp-for="Spicyness" asp-items="Html.GetEnumSelectList<CreateMenuItemVM.ESpicy>()" class="form-control"></select>
+
+            </div>
+            <div class="form-group">
+                <label asp-for="Category" class="control-label"></label>
+                <input asp-for="Category.Name" class="form-control" readonly />
+
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input readonly asp-for="Price" class="form-control" />
+
+            </div>
+            <div class="form-group">
+                <a class="btn btn-warning" asp-action="Edit" asp-route-id="@Model.Id">Edit <i class="fas fa-edit"></i></a>
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+                    Delete <i class="fas fa-trash-alt"></i>
+                </button>
+                <a class="btn btn-info" asp-action="Index">Back to List</a>
+            </div>
+        </form>
+    </div>
+
+    <div class="col-6 d-flex justify-content-center">
+        @if (Model.Image == null)
+        {
+            <img src="~/images/default_food.png"
+                 class="img-fluid"
+                 asp-append-version="true" />
+        }
+        else
+        {
+            <img src="~/images/@Model.Image"
+                 class="img-fluid"
+                 asp-append-version="true" />
+        }
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Are you Sure you want to delete Item?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <a class="btn btn-danger" asp-route-id="@Model.Id" asp-action="Delete">Delete <i class="fas fa-trash-alt"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+
