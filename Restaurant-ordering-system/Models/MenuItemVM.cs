@@ -99,4 +99,15 @@ namespace Restaurant_ordering_system.Models
 
         public string  CurrentPicture { get; set; }
     }
+
+    public class CustomerMenuVM
+    {
+        public List<CategoryVM> Categories { get; set; }
+
+        public List<MenuItemVM> Starters { get; set; }
+
+        public List<MenuItemVM> MainCourse { get; set; }
+
+        public List<MenuItemVM> Desserts { get; set; }
+    }
 }

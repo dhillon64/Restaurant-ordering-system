@@ -44,6 +44,12 @@ namespace Restaurant_ordering_system.Repository
             return await _db.MenuItems.Include(q => q.Category).FirstOrDefaultAsync(q => q.Id == Id);
         }
 
+        public async Task<ICollection<MenuItem>> GetMenuItemsByCategory(int categoryId)
+        {
+            var menuItems =await FindAll();
+            return menuItems.Where(q => q.CategoryId == categoryId).ToList();
+        }
+
         public async Task<bool> Save()
         {
             return await _db.SaveChangesAsync() > 0 ? true : false;

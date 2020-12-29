@@ -17,6 +17,8 @@ namespace Restaurant_ordering_system.Mappings
             CreateMap<MenuItem, MenuItemVM>().ReverseMap();
             CreateMap<MenuItem, AdminViewVM>().ReverseMap();
             CreateMap<MenuItem, EditMenuItemVM>().ReverseMap();
+            CreateMap<ApplicationUser, UsersVM>().ReverseMap();
+            CreateMap<ApplicationUser, UsersListVM>().ReverseMap();
 
         }
     }

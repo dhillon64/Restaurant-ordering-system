@@ -9,5 +9,7 @@ namespace Restaurant_ordering_system.Contracts
     public interface IMenuItemRepository: IRepositoryBase<MenuItem>
     {
 
+        Task<ICollection<MenuItem>> GetMenuItemsByCategory(int categoryId);
+
     }
 }

@@ -1,0 +1,115 @@
+﻿@model CustomerMenuVM
+
+@{
+    ViewData["Title"] = "View";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="border backgroundWhite mt-3">
+    <div class="row d-flex justify-content-center">
+        @foreach (var item in Model.Categories)
+        {
+        <a href="#@item.Name" class="btn btn-primary m-2">@item.Name</a>
+        }
+    </div>
+    <br />
+    <hr />
+    <h3 id="Starter">Starters</h3>
+    @foreach (var item in Model.Starters)
+    {
+        <div class="row">
+            <div class="col-md-12">
+
+
+                <div class="card border-warning mb-3 p-3">
+                    <div class="media">
+                        <img class="mr-3 rounded" src="~/images/@item.Image" height="190" width="190" alt="Generic placeholder image">
+                        <div class="media-body">
+                            <div class="row">
+                                <div class="col-8">
+                                    <h4 class="mt-0">
+                                        @item.Name
+                                        @if (item.Spicyness == "1")
+                                        {
+                                            <img src="~/images/mild.png" title="Mild" />
+                                        }
+                                        @if (item.Spicyness == "2")
+                                        {
+                                            <img src="~/images/spicy.png" title="Spicy" />
+                                        }
+                                        @if (item.Spicyness == "3")
+                                        {
+                                            <img src="~/images/verySpicy.png" title="VerySpicy" />
+                                        }
+                                    </h4>
+                                </div>
+                                <div class="col-4">
+                                    <h4 class="text-right"><span class="badge-pill badge-danger">£@item.Price</span></h4>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    @item.Description
+                                </div>   
+                            </div>
+                            <div class="text-right">
+                                <a class="btn btn-success text-right" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    }
+    <h3>Main Course</h3>
+    @foreach (var item in Model.MainCourse)
+    {
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card border-warning mb-3 p-3">
+                    <div class="media">
+                        <img class="mr-3 rounded" src="~/images/@item.Image" height="190" width="190" alt="Generic placeholder image">
+                        <div class="media-body">
+                            <div class="row">
+                                <div class="col-8">
+                                    <h4 class="mt-0">
+                                        @item.Name
+                                        @if (item.Spicyness == "1")
+                                        {
+                                            <img src="~/images/mild.png" title="Mild" />
+                                        }
+                                        @if (item.Spicyness == "2")
+                                        {
+                                            <img src="~/images/spicy.png" title="Spicy" />
+                                        }
+                                        @if (item.Spicyness == "3")
+                                        {
+                                            <img src="~/images/verySpicy.png" title="VerySpicy" />
+                                        }
+                                    </h4>
+                                </div>
+                                <div class="col-4">
+                                    <h4 class="text-right"><span class="badge-pill badge-danger">£@item.Price</span></h4>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    @item.Description
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <a class="btn btn-success text-right" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    }
+
+
+</div>
+
+

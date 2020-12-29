@@ -17,6 +17,9 @@ namespace Restaurant_ordering_system.Data
         public DbSet<Category> Categories { get; set; }
 
         public DbSet<MenuItem> MenuItems { get; set; }
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+        public DbSet<ShoppingCart> ShoppingCart { get; set; }
+
 
     }
 }

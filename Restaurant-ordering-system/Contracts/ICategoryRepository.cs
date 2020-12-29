@@ -10,5 +10,7 @@ namespace Restaurant_ordering_system.Contracts
     {
         Task<bool> Exists(string Name);
 
+        Task<Category> FindByName(string Name);
+
     }
 }

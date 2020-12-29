@@ -48,6 +48,11 @@ namespace Restaurant_ordering_system.Repository
             return await _db.Categories.FindAsync(Id);
         }
 
+        public async Task<Category> FindByName(string Name)
+        {
+            return await _db.Categories.FirstOrDefaultAsync(q=>q.Name==Name);
+        }
+
         public async Task<bool> Save()
         {
             return await _db.SaveChangesAsync() > 0 ? true : false;
